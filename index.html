@@ -59,7 +59,7 @@ h2{font-size:20px;margin:40px 0 14px}
   <h2>چیزهایی که تو سبد گذاشتم</h2>
   <section class="grid" id="items"></section>
 
-  <!-- آدرس سبد خرید بیپ‌بیپ رو اینجا بذار -->
+  <!-- لینک این دکمه خودکار از لیست محصولات ساخته می‌شه -->
   <a class="cta" id="cart" href="#" rel="noopener">
     <b>روی این دکمه بزن و تو صفحه بعدی شهر و استانت رو انتخاب کن</b>
     <span>هر کدوم رو نیاز نداشتی، تو صفحه بعدی می‌تونی حذف کنی.</span>
@@ -78,7 +78,7 @@ h2{font-size:20px;margin:40px 0 14px}
 
 <script>
 // ===== تنظیمات: فقط این بخش رو ویرایش کن =====
-var CART_URL = "#";        // لینک سبد خرید بیپ‌بیپ
+var BUNDLE_BASE = "https://bipbeep.ir/?bundle=";   // آدرس بیپ‌بیپ (اسنیپت bundle باید اونجا فعال باشه)
 var RUBIKA_URL = "#";      // لینک روبیکا
 var INSTAGRAM_URL = "#";   // لینک اینستاگرام
 
@@ -112,7 +112,11 @@ ITEMS.forEach(function(p){
   f.appendChild(d); f.appendChild(c); box.appendChild(f);
 });
 document.querySelectorAll(".ph").forEach(fill);
-document.getElementById("cart").href = CART_URL;
+var ids = ITEMS.map(function(p){ return p.id; }).join(",");
+var cart = document.getElementById("cart");
+cart.href = BUNDLE_BASE + ids;
+cart.target = "_blank";
+cart.rel = "noopener";
 document.getElementById("rubika").href = RUBIKA_URL;
 document.getElementById("instagram").href = INSTAGRAM_URL;
 </script>
