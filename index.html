@@ -25,12 +25,13 @@ h2{font-size:20px;margin:40px 0 14px}
 .item{margin:0}
 .item .ph{aspect-ratio:1/1}
 .item figcaption{font-size:13px;line-height:1.7;text-align:center;margin-top:6px;color:var(--ink)}
-.cta{display:block;margin:44px 0 0;text-decoration:none;background:var(--accent);color:var(--accent-ink);border-radius:22px;padding:30px 22px;text-align:center;box-shadow:0 8px 0 #D77CA3;transition:transform .15s,box-shadow .15s}
-.cta:hover{transform:translateY(3px);box-shadow:0 5px 0 #D77CA3}
-.cta:active{transform:translateY(8px);box-shadow:0 0 0 #D77CA3}
+.cta-box{margin:44px 0 0;background:#FAF4B8;border:1.5px solid #E8DE8A;border-radius:24px;padding:28px 22px 30px;text-align:center}
+.cta-box p{margin:0;font-weight:600;font-size:19px;line-height:1.9}
+.cta-box small{display:block;font-size:15px;margin:6px 0 22px;color:var(--soft)}
+.cta{display:inline-block;text-decoration:none;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:12px 38px;font-weight:800;font-size:19px;box-shadow:0 6px 0 #D77CA3;transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translateY(3px);box-shadow:0 3px 0 #D77CA3}
+.cta:active{transform:translateY(6px);box-shadow:0 0 0 #D77CA3}
 .cta:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
-.cta b{display:block;font-size:22px;line-height:1.8}
-.cta span{display:block;font-size:15px;margin-top:6px}
 .end{margin-top:56px;padding-top:26px;border-top:1px solid var(--line)}
 .end p{margin:0 0 12px}
 .links{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
@@ -46,7 +47,7 @@ h2{font-size:20px;margin:40px 0 14px}
   <p class="brand">هوم حدیث</p>
 
   <!-- عکس بالای صفحه: آدرس عکس رو بذار تو data-img -->
-  <div class="ph hero" data-img="">اینجا عکس چهره یا خونه</div>
+  <div class="ph hero" data-img="./images/homehadis-banner.jpg">بنر هوم حدیث</div>
 
   <section class="intro">
     <p class="first">سلام. یه نکته کوچیک که خودم بعد از کلی ریخت‌وپاش یاد گرفتم:</p>
@@ -60,13 +61,14 @@ h2{font-size:20px;margin:40px 0 14px}
   <section class="grid" id="items"></section>
 
   <!-- لینک این دکمه خودکار از لیست محصولات ساخته می‌شه -->
-  <a class="cta" id="cart" href="#" rel="noopener">
-    <b>روی این دکمه بزن و تو صفحه بعدی شهر و استانت رو انتخاب کن</b>
-    <span>هر کدوم رو نیاز نداشتی، تو صفحه بعدی می‌تونی حذف کنی.</span>
-  </a>
+  <div class="cta-box">
+    <p>روی دکمه‌ی پایین بزن و تو صفحه‌ی بعدی شهر و استانت رو انتخاب کن.</p>
+    <small>هر کدوم رو نیاز نداشتی، تو صفحه‌ی بعدی می‌تونی حذف کنی.</small>
+    <a class="cta" id="cart" href="#" rel="noopener">سبد پیشنهادی حدیث</a>
+  </div>
 
   <section class="end">
-    <p>فلسفه من، خونه رو محل آرامش و خلاقیته.</p>
+    <p>فلسفه من اینه: خونه محل آرامش و خلاقیته.</p>
     <p>یادت نره من رو فالو کنی:</p>
     <div class="links">
       <a href="#" id="rubika" rel="noopener">روبیکا</a>
@@ -78,6 +80,7 @@ h2{font-size:20px;margin:40px 0 14px}
 
 <script>
 // ===== تنظیمات: فقط این بخش رو ویرایش کن =====
+var CAMPAIGN = "organizer";   // اسم کمپین: فقط حروف کوچیک انگلیسی و خط تیره
 var BUNDLE_BASE = "https://bipbeep.ir/?bundle=";   // آدرس بیپ‌بیپ (اسنیپت bundle باید اونجا فعال باشه)
 var RUBIKA_URL = "#";      // لینک روبیکا
 var INSTAGRAM_URL = "#";   // لینک اینستاگرام
@@ -114,7 +117,12 @@ ITEMS.forEach(function(p){
 document.querySelectorAll(".ph").forEach(fill);
 var ids = ITEMS.map(function(p){ return p.id; }).join(",");
 var cart = document.getElementById("cart");
-cart.href = BUNDLE_BASE + ids;
+var campaign = CAMPAIGN + "-" + ITEMS.length + "item";
+var utm = "utm_source=homehadis&utm_medium=landing&utm_campaign=" + campaign;
+cart.href = BUNDLE_BASE + ids + "&" + utm;
+cart.addEventListener("click", function(){
+  if (window.gtag) gtag("event", "cart_click", {campaign: campaign});
+});
 cart.target = "_blank";
 cart.rel = "noopener";
 document.getElementById("rubika").href = RUBIKA_URL;
