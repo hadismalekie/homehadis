@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>هوم حدیث</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap">
+<style>
+:root{
+  --bg:#F7EEF8; --ink:#4A2F55; --soft:#8A7094; --card:#FFFFFF; --line:#E6D4EA; --accent:#F4A9C7; --accent-ink:#3D1230;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif;line-height:2;font-size:17px}
+.wrap{max-width:720px;margin:0 auto;padding:28px 18px 60px}
+.brand{font-weight:800;font-size:22px;margin:0 0 18px}
+.ph{background:repeating-linear-gradient(45deg,#EBDDF1,#EBDDF1 10px,#F2E7F6 10px,#F2E7F6 20px);border:1.5px dashed #CDB3D8;border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--soft);font-size:13px;text-align:center;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.hero{aspect-ratio:16/10;margin-bottom:26px}
+.intro p{margin:0 0 14px}
+.intro .first{font-weight:600;font-size:19px}
+.intro .tail{background:var(--card);border-radius:14px;padding:14px 18px;border-right:5px solid var(--accent)}
+h2{font-size:20px;margin:40px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.item{margin:0}
+.item .ph{aspect-ratio:1/1}
+.item figcaption{font-size:13px;line-height:1.7;text-align:center;margin-top:6px;color:var(--ink)}
+.cta{display:block;margin:44px 0 0;text-decoration:none;background:var(--accent);color:var(--accent-ink);border-radius:22px;padding:30px 22px;text-align:center;box-shadow:0 8px 0 #D77CA3;transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translateY(3px);box-shadow:0 5px 0 #D77CA3}
+.cta:active{transform:translateY(8px);box-shadow:0 0 0 #D77CA3}
+.cta:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+.cta b{display:block;font-size:22px;line-height:1.8}
+.cta span{display:block;font-size:15px;margin-top:6px}
+.end{margin-top:56px;padding-top:26px;border-top:1px solid var(--line)}
+.end p{margin:0 0 12px}
+.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.links a{color:var(--ink);font-weight:600;text-decoration:none;border:1.5px solid var(--ink);border-radius:999px;padding:4px 20px}
+.links a:hover{background:var(--ink);color:var(--bg)}
+.links a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.cta{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <p class="brand">هوم حدیث</p>
+
+  <!-- عکس بالای صفحه: آدرس عکس رو بذار تو data-img -->
+  <div class="ph hero" data-img="">اینجا عکس چهره یا خونه</div>
+
+  <section class="intro">
+    <p class="first">سلام. یه نکته کوچیک که خودم بعد از کلی ریخت‌وپاش یاد گرفتم:</p>
+    <p>بیشتر شلوغی ورودی خانه از کمبود فضا نیست، از نبودن «جای ثابت» برای هر چیزیه.</p>
+    <p>امشب فقط ۱۰ دقیقه وقت بذار: کفش‌هایی که هر روز می‌پوشی رو بذار کنار در، بقیه رو ببر داخل کمد. کیف و خریدهای کوچک رو هم بریز توی یه باکس کنار همون نقطه.</p>
+    <p>فردا صبح می‌بینی ورودی خونه مرتب‌تره، بدون اینکه حتی یه وسیله جدید خریده باشی.</p>
+    <p class="tail">اگه برای همین «جای ثابت» هنوز جاکفشی و آویز کیف نداری، پایین چند چیز کوچیک گذاشتم که همین کار رو راحت‌تر می‌کنه. سبد رو بستم که یک‌جا ببینی؛ هر چیزی رو نیاز نداشتی، همون‌جا حذف کن.</p>
+  </section>
+
+  <h2>چیزهایی که تو سبد گذاشتم</h2>
+  <section class="grid" id="items"></section>
+
+  <!-- آدرس سبد خرید بیپ‌بیپ رو اینجا بذار -->
+  <a class="cta" id="cart" href="#" rel="noopener">
+    <b>روی این دکمه بزن و تو صفحه بعدی شهر و استانت رو انتخاب کن</b>
+    <span>هر کدوم رو نیاز نداشتی، تو صفحه بعدی می‌تونی حذف کنی.</span>
+  </a>
+
+  <section class="end">
+    <p>فلسفه من، خونه رو محل آرامش و خلاقیته.</p>
+    <p>یادت نره من رو فالو کنی:</p>
+    <div class="links">
+      <a href="#" id="rubika" rel="noopener">روبیکا</a>
+      <a href="#" id="instagram" rel="noopener">اینستاگرام</a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// ===== تنظیمات: فقط این بخش رو ویرایش کن =====
+var CART_URL = "#";        // لینک سبد خرید بیپ‌بیپ
+var RUBIKA_URL = "#";      // لینک روبیکا
+var INSTAGRAM_URL = "#";   // لینک اینستاگرام
+
+// img = آدرس عکس هر محصول (اگه خالی باشه، کادر خالی نشون داده می‌شه)
+var ITEMS = [
+  {id:1278, text:"برای کفش‌ها داخل کمد", img:""},
+  {id:1263, text:"برای کیف‌ها داخل کمد", img:""},
+  {id:1396, text:"برای کفش‌های اضافه", img:""},
+  {id:1400, text:"برای پتو و لباس", img:""},
+  {id:1542, text:"برای زیر تخت", img:""},
+  {id:1556, text:"برای لوازم آرایش", img:""},
+  {id:1561, text:"برای ملحفه و روتختی", img:""},
+  {id:1643, text:"برای خشک کردن لباس", img:""},
+  {id:1684, text:"برای لباس‌ها", img:""},
+  {id:1678, text:"برای لباس‌های کثیف", img:""},
+  {id:1719, text:"برای سینک", img:""},
+  {id:1916, text:"برای کیسه‌های پلاستیکی", img:""}
+];
+// ============================================
+
+function fill(ph){
+  var src = ph.getAttribute("data-img");
+  if(src){ var i = document.createElement("img"); i.src = src; i.alt = ph.textContent.trim(); ph.textContent = ""; ph.appendChild(i); }
+}
+var box = document.getElementById("items");
+ITEMS.forEach(function(p){
+  var f = document.createElement("figure"); f.className = "item";
+  var d = document.createElement("div"); d.className = "ph";
+  d.setAttribute("data-img", p.img); d.textContent = "عکس";
+  var c = document.createElement("figcaption"); c.textContent = p.text;
+  f.appendChild(d); f.appendChild(c); box.appendChild(f);
+});
+document.querySelectorAll(".ph").forEach(fill);
+document.getElementById("cart").href = CART_URL;
+document.getElementById("rubika").href = RUBIKA_URL;
+document.getElementById("instagram").href = INSTAGRAM_URL;
+</script>
+</body>
+</html>
