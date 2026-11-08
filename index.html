@@ -76,7 +76,7 @@ h2{font-size:20px;margin:40px 0 14px}
   <p class="brand">هوم حدیث</p>
 
   <!-- عکس بالای صفحه: آدرس عکس رو بذار تو data-img -->
-  <div class="ph hero" data-img="./images/homehadis-banner.jpg">بنر هوم حدیث</div>
+  <div class="ph hero" data-img="homehadis-banner.jpg">بنر هوم حدیث</div>
 
   <section class="intro">
     <p class="first">سلام. یه نکته کوچیک که خودم بعد از کلی ریخت‌وپاش یاد گرفتم:</p>
@@ -109,6 +109,7 @@ h2{font-size:20px;margin:40px 0 14px}
 
 <script>
 // ===== تنظیمات: فقط این بخش رو ویرایش کن =====
+var IMAGE_BASE = "https://bargesheni.ir/wp-content/uploads/2026/11/";   // آدرس پوشه‌ی عکس‌ها (با / آخرش)
 var CAMPAIGN = "organizer";   // اسم کمپین: فقط حروف کوچیک انگلیسی و خط تیره
 var BUNDLE_BASE = "https://bipbeep.ir/?bundle=";   // آدرس بیپ‌بیپ (اسنیپت bundle باید اونجا فعال باشه)
 var RUBIKA_URL = "#";      // لینک روبیکا
@@ -116,24 +117,32 @@ var INSTAGRAM_URL = "#";   // لینک اینستاگرام
 
 // img = آدرس عکس هر محصول (اگه خالی باشه، کادر خالی نشون داده می‌شه)
 var ITEMS = [
-  {id:1278, text:"برای کفش‌ها داخل کمد", img:"./images/1shoesHanger.jpg"},
-  {id:1263, text:"برای کیف‌ها داخل کمد", img:"./images/2bagHanger.jpg"},
-  {id:1396, text:"برای کفش‌های اضافه", img:"./images/3ShoesOrganizer.jpg"},
-  {id:1400, text:"برای پتو و لباس", img:"./images/4BlankerOrganizer.jpg"},
-  {id:1542, text:"برای زیر تخت", img:"./images/5UnderBet.jpg"},
-  {id:1556, text:"برای لوازم آرایش", img:"./images/5MakeupStand.jpg"},
-  {id:1561, text:"برای ملحفه و روتختی", img:"./images/6SheetStretcher.jpg"},
-  {id:1643, text:"برای خشک کردن لباس", img:"./images/7RadiatorFold.jpg"},
-  {id:1684, text:"برای لباس‌ها", img:"./images/8ClothOrgaizer.jpg"},
-  {id:1678, text:"برای لباس‌های کثیف", img:"./images/9ForWashingMachine.jpg"},
-  {id:1719, text:"برای سینک", img:"./images/10ForSink.jpg"},
-  {id:1916, text:"برای کیسه‌های پلاستیکی", img:"./images/11PlasticOrganizer.jpg"}
+  {id:1278, text:"برای کفش‌ها داخل کمد", img:"1shoesHanger.jpg"},
+  {id:1263, text:"برای کیف‌ها داخل کمد", img:"2bagHanger.jpg"},
+  {id:1396, text:"برای کفش‌های اضافه", img:"3ShoesOrganizer.jpg"},
+  {id:1400, text:"برای پتو و لباس", img:"4BlankerOrganizer.jpg"},
+  {id:1542, text:"برای زیر تخت", img:"5UnderBet.jpg"},
+  {id:1556, text:"برای لوازم آرایش", img:"5MakeupStand.jpg"},
+  {id:1561, text:"برای ملحفه و روتختی", img:"6SheetStretcher.jpg"},
+  {id:1643, text:"برای خشک کردن لباس", img:"7RadiatorFold.jpg"},
+  {id:1684, text:"برای لباس‌ها", img:"8ClothOrgaizer.jpg"},
+  {id:1678, text:"برای لباس‌های کثیف", img:"9ForWashingMachine.jpg"},
+  {id:1719, text:"برای سینک", img:"10ForSink.jpg"},
+  {id:1916, text:"برای کیسه‌های پلاستیکی", img:"11PlasticOrganizer.jpg"}
 ];
 // ============================================
 
-function fill(ph){
+function fill(ph, lazy){
   var src = ph.getAttribute("data-img");
-  if(src){ var i = document.createElement("img"); i.onerror = function(){ console.warn("Image not found:", i.src); }; i.src = src; i.alt = ph.textContent.trim(); ph.textContent = ""; ph.appendChild(i); }
+  if(src){
+    var i = document.createElement("img");
+    i.onerror = function(){ console.warn("Image not found:", i.src); };
+    if(lazy){ i.loading = "lazy"; } else { i.setAttribute("fetchpriority","high"); }
+    i.src = IMAGE_BASE + src;
+    i.alt = ph.textContent.trim();
+    ph.textContent = "";
+    ph.appendChild(i);
+  }
 }
 var box = document.getElementById("items");
 ITEMS.forEach(function(p){
@@ -143,7 +152,7 @@ ITEMS.forEach(function(p){
   var c = document.createElement("figcaption"); c.textContent = p.text;
   f.appendChild(d); f.appendChild(c); box.appendChild(f);
 });
-document.querySelectorAll(".ph").forEach(fill);
+document.querySelectorAll(".ph").forEach(function(ph){ fill(ph, !ph.classList.contains("hero")); });
 var ids = ITEMS.map(function(p){ return p.id; }).join(",");
 var cart = document.getElementById("cart");
 var campaign = CAMPAIGN + "-" + ITEMS.length + "item";
