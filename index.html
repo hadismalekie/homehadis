@@ -4,6 +4,32 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>هوم حدیث</title>
+<link rel="icon" href="https://bargesheni.ir/wp-content/uploads/2026/08/homadis-512.png?v=2" type="image/png">
+<link rel="shortcut icon" href="https://bargesheni.ir/wp-content/uploads/2026/08/homadis-512.png?v=2" type="image/png">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":
+new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
+"https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,"script","dataLayer","GTM-5MRN4BHK");</script>
+<!-- End Google Tag Manager -->
+
+<!-- Yektaned Tag Manager -->
+<script>
+    !function (t, e, n) {
+        t.yektanetAnalyticsObject = n, t[n] = t[n] || function () {
+            t[n].q.push(arguments)
+        }, t[n].q = t[n].q || [];
+        var a = new Date, r = a.getFullYear().toString() + "0" + a.getMonth() + "0" + a.getDate() + "0" + a.getHours(),
+            c = e.getElementsByTagName("script")[0], s = e.createElement("script");
+        s.id = "ua-script-B10FRaCs"; s.dataset.analyticsobject = n;
+        s.async = 1; s.type = "text/javascript";
+        s.src = "https://cdn.yektanet.com/rg_woebegone/scripts_v3/B10FRaCs/rg.complete.js?v=" + r, c.parentNode.insertBefore(s, c)
+    }(window, document, "yektanet");
+</script>
+<!-- End Yektaned Tag Manager -->
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap">
 <style>
 :root{
@@ -42,6 +68,9 @@ h2{font-size:20px;margin:40px 0 14px}
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MRN4BHK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <main class="wrap">
 
   <p class="brand">هوم حدیث</p>
@@ -121,7 +150,8 @@ var campaign = CAMPAIGN + "-" + ITEMS.length + "item";
 var utm = "utm_source=homehadis&utm_medium=landing&utm_campaign=" + campaign;
 cart.href = BUNDLE_BASE + ids + "&" + utm;
 cart.addEventListener("click", function(){
-  if (window.gtag) gtag("event", "cart_click", {campaign: campaign});
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({event: "cart_click", campaign: campaign});
 });
 cart.target = "_blank";
 cart.rel = "noopener";
